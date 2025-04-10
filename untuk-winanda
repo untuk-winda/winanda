@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Untuk Winanda Salvira</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1a1a2e, #16213e);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-top: 2rem;
+      padding: 0 1rem;
+    }
+
+    p.message {
+      font-size: 1.2rem;
+      max-width: 90%;
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .music-player {
+      text-align: center;
+      margin: 20px auto;
+    }
+
+    .letter {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .letter button {
+      background: #ff5e78;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 500px;
+      z-index: 1000;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .popup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ff5e78;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .hearts, .snow {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .heart, .snowflake {
+      position: absolute;
+      animation: floatDown linear infinite;
+    }
+
+    .heart {
+      color: pink;
+      font-size: 2rem;
+    }
+
+    .snowflake {
+      color: #ffffffaa;
+      font-size: 1.2rem;
+    }
+
+    @keyframes floatDown {
+      0% { transform: translateY(-100px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .message, .popup { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts-container"></div>
+  <div class="snow" id="snow-container"></div>
+
+  <h1>Untuk Winanda Salvira</h1>
+  <p class="message">
+    Sayangku Winanda, kamu adalah anugerah yang hadir dalam hidupku. 
+    Setiap hari bersamamu terasa seperti keajaiban. Aku mencintaimu 
+    lebih dari kata-kata yang bisa kuucapkan, dan akan terus mencintaimu, selamanya.
+  </p>
+
+  <div class="music-player">
+    <p>Lagu cinta ini untukmu:</p>
+    <audio controls autoplay loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div class="letter">
+    <button onclick="showLetter()">Buka Surat Cinta</button>
+  </div>
+
+  <div class="popup" id="popupLetter">
+    <h2>Untuk Cintaku, Winanda</h2>
+    <p>
+      Cintaku padamu bukan hanya tentang kata-kata, tapi tentang hati yang bergetar setiap kali memikirkanmu. 
+      Aku berjanji untuk selalu ada, mencintaimu dalam suka dan duka. Kamu adalah dunia dan masa depanku.
+    </p>
+    <button onclick="closeLetter()">Tutup</button>
+  </div>
+
+  <script>
+    function showLetter() {
+      document.getElementById("popupLetter").style.display = "block";
+    }
+
+    function closeLetter() {
+      document.getElementById("popupLetter").style.display = "none";
+    }
+
+    // Hati jatuh
+    const hearts = document.getElementById("hearts-container");
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "♥";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 400);
+
+    // Efek salju
+    const snow = document.getElementById("snow-container");
+    setInterval(() => {
+      const flake = document.createElement("div");
+      flake.classList.add("snowflake");
+      flake.innerHTML = "❄";
+      flake.style.left = Math.random() * 100 + "vw";
+      flake.style.fontSize = (Math.random() * 10 + 10) + "px";
+      flake.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      snow.appendChild(flake);
+      setTimeout(() => flake.remove(), 8000);
+    }, 300);
+  </script>
+</body>
+</html>
